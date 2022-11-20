@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Projects.css";
 import axios from "axios";
-import { ToggleButton } from "@mui/material";
 import { XMasonry, XBlock } from "react-xmasonry";
+import FilterGroup from "../FilterGroup/FilterGroup";
 
 function Projects(props) {
 	const BACKEND_URL = "https://irenna-lumbuun-backend.herokuapp.com";
 	const [projectsToDisplay, setProjectsToDisplay] = useState([]);
 	const [tags, setTags] = useState([]);
-
-	// Begin by displaying all projects
-	const [selectedTag, setSelectedTag] = useState("all");
 
 	useEffect(() => {
 		getAllProjects();
@@ -139,50 +136,13 @@ function Projects(props) {
 		<section>
 			<h1 id="project-title">Projects</h1>
 			<h2 id="project-filter-title">Filter by Tag: </h2>
-			<div id="filter-container">
-				<ToggleButton
-					value="all"
-					className="filter-option"
-					selected={selectedTag === "all"}
-					onChange={() => {
-						setSelectedTag("all");
-						getAllProjects();
-					}}
-					style={{ backgroundColor: "white", color: "black" }}
-					id="all"
-				>
-					<strong>All Projects</strong>
-				</ToggleButton>
-
-				{tags.map((tag) => {
-					return (
-						<ToggleButton
-							value={tag.name}
-							selected={selectedTag === tag.name}
-							className="filter-option"
-							id={tag.id}
-							style={{
-								backgroundColor: getTagColor(
-									tag.id.replace(" ", "-").toLowerCase()
-								)[0],
-								color: "black",
-							}}
-							onChange={() => {
-								setSelectedTag(tag.name);
-								// We basically replace any " " and "/" with a "-"
-								// This is because for a tag like React Native,
-								// the tag id should be "react-native"
-								// But for HTML/CSS, it should be "html-css"
-								getProjectsByTag(
-									tag.name.replace(/ |\//, "-").toLowerCase()
-								).then((projects) => setProjectsToDisplay(projects));
-							}}
-						>
-							{tag.name.replace("-", " ")}
-						</ToggleButton>
-					);
-				})}
-			</div>
+			<FilterGroup
+				getTagColor={getTagColor}
+				getAllProjects={getAllProjects}
+				tags={tags}
+				getProjectsByTag={getProjectsByTag}
+				setProjectsToDisplay={setProjectsToDisplay}
+			/>
 			<XMasonry center={false}>
 				{projectsToDisplay.map((project) => (
 					<XBlock>

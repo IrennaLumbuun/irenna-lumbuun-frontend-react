@@ -6,9 +6,8 @@ import { FullPage, Slide } from 'react-full-page';
 import { slide as Menu } from 'react-burger-menu'
 
 function App() {
-  const [isMenuOpen, setMenuOpen] = useState(false)
-  console.log(isMenuOpen)
-
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  
   return (
     <FullPage scrollMode="normal" className="App">
       <Slide id="IntroPage">

@@ -9,6 +9,9 @@ function Projects(props) {
 	const [projectsToDisplay, setProjectsToDisplay] = useState([]);
 	const [tags, setTags] = useState([]);
 
+	// Begin by displaying all projects
+	const [selectedTag, setSelectedTag] = useState("all");
+
 	useEffect(() => {
 		getAllProjects();
 		getTags();
@@ -131,7 +134,8 @@ function Projects(props) {
 	};
 
 	const breakpointColumnsObj = {
-		default: 4,
+		default: 5,
+		1400: 4,
 		1100: 3,
 		700: 2,
 		500: 1,
@@ -141,36 +145,46 @@ function Projects(props) {
 		<section>
 			<h1 id="project-title">Projects</h1>
 			<h2 id="project-filter-title">Filter by Tag: </h2>
-			<ToggleButton value="all" onChange={() => getAllProjects()}>
-				<div
+			<div id="filter-container">
+				<ToggleButton
+					value="all"
 					className="filter-option"
-					id="all"
+					selected={selectedTag === "all"}
+					onChange={() => {
+						setSelectedTag("all");
+						getAllProjects();
+					}}
 					style={{ backgroundColor: "white", color: "black" }}
+					id="all"
 				>
 					<strong>All Projects</strong>
-				</div>
-			</ToggleButton>
+				</ToggleButton>
 
-			{tags.map((tag) => {
-				return (
-					<ToggleButton
-						value={tag.name}
-						onChange={() => {
-							getProjectsByTag(tag.name.replace(" ", "-").toLowerCase()).then(
-								(projects) => setProjectsToDisplay(projects)
-							);
-						}}
-					>
-						<div
+				{tags.map((tag) => {
+					return (
+						<ToggleButton
+							value={tag.name}
+							selected={selectedTag === tag.name}
 							className="filter-option"
 							id={tag.id}
-							style={getTagStyle(tag.id)}
+							style={{
+								backgroundColor: getTagColor(
+									tag.id.replace(" ", "-").toLowerCase()
+								)[0],
+								color: "black",
+							}}
+							onChange={() => {
+								setSelectedTag(tag.name);
+								getProjectsByTag(tag.name.replace(" ", "-").toLowerCase()).then(
+									(projects) => setProjectsToDisplay(projects)
+								);
+							}}
 						>
 							{tag.name.replace("-", " ")}
-						</div>
-					</ToggleButton>
-				);
-			})}
+						</ToggleButton>
+					);
+				})}
+			</div>
 
 			<Masonry
 				breakpointCols={breakpointColumnsObj}

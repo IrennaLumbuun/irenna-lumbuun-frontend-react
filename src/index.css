@@ -17,7 +17,3 @@ code {
   --animate-delay: 1s;
   --animate-repeat: 1;
 }
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}

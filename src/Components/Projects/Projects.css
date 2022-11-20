@@ -9,7 +9,7 @@ h1#project-title {
   h2#project-filter-title {
     color: white;
     margin-top: 1rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     font-size: revert;
     text-decoration: underline;
     text-underline-position: under;
@@ -19,45 +19,55 @@ h1#project-title {
     display: flex;
     flex-wrap: wrap;
     color: black;
-    margin-left: 0.5rem;
+    margin: 1rem 2rem;
   }
   
   div#all {
     font-weight: 500;
   }
   
-  div.filter-option {
-    padding: 0 10px;
-    border-radius: 10px;
-    margin: 0.5rem -6px;
-    text-transform: capitalize;
-    font-size: 14px;
-    font-weight: 400;
-    font-family:monospace;
-    border: 2px solid transparent;
+  .MuiToggleButton-root {
+    padding: 0 10px !important; 
+    border-radius: 10px !important;
+    margin: 0.5rem 6px!important;
+    text-transform: capitalize !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    font-family: monospace !important;
+    border: 2px solid transparent !important;
+    line-height: 2rem !important;
   }
+
+  .Mui-selected {
+    opacity: 0.5;
+  }
+
+  .my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: inline-flex;
+    width: -webkit-fill-available;
+    margin: 1rem;
+  }
+  .my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    margin-bottom: 30px;
+  }
+
   
-  /*skeleton*/
-  /* div.filter-option:hover{
-    background-color:#1F2933!important;
-  } */
-  
-  /*Non-skeleton*/
+
   div.filter-option:hover{
     opacity:0.8 !important;
   }
   
-  div#projects-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
   div.project-component {
     background-color: #3B3B3B;
-    margin: 1rem;
+    /* margin: 1rem; */
     border-radius: 10px;
     padding: 1rem;
-    max-width: 275px;
     height: fit-content;
     color:white;
   }
@@ -67,6 +77,7 @@ h1#project-title {
   
   .project-description{
     font-size: 16px;
+    line-height: 1.5rem;
   }
   
   ul.project-tags {

@@ -1,0 +1,100 @@
+#home{
+    margin: 0 2rem 2rem 2rem;
+    padding-top:30vh;
+    display:flex;
+    flex-direction:column;
+}
+#home-text-container{
+    background: transparent;
+    display:flex;
+    align-self:center;
+    font-family: sans-serif;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+h1#title {
+    text-align: center;
+    font-size: 7vw;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0;
+}
+
+#tagline{
+    color: white;
+    font-size: 4vw;
+    align-self: center;
+    font-family: sans-serif;
+    font-weight: 200;
+    margin-top:0;
+}
+
+#blink{
+    font-size:6vw;
+}
+
+.blink_me {
+  animation: blinker 1s ease-in infinite;
+  color:white;
+  opacity:1;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+div#home-button-container {
+    display: flex;
+    align-self: center;
+}
+
+.contact-button{
+    width: 25vw;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size:20px;
+    margin-right:1rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Mobile setting */
+@media (max-width: 600px) {
+  .contact-button{
+        font-size:4vw;
+    }
+}
+
+#resume-contact-button {
+    color: #F5D5CB;
+    border: 2px solid #F5D5CB;
+}
+
+#resume-contact-button:hover {
+    background-color: #F5D5CB;
+    color: black;
+}
+
+#linkedin-contact-button {
+    color: #ABDEE6;
+    border: 2px solid #ABDEE6;
+}
+
+#linkedin-contact-button:hover {
+    background-color: #ABDEE6;
+    color: black;
+}
+
+#github-contact-button {
+    color: #C270C0;
+    border: 2px solid #C270C0;
+}
+
+#github-contact-button:hover {
+    background-color: #C270C0;
+    color: black;
+}

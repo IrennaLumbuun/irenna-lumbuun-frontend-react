@@ -41,31 +41,23 @@ h1#project-title {
   .Mui-selected {
     opacity: 0.5;
   }
-
-  .my-masonry-grid {
-    display: -webkit-box; /* Not needed if autoprefixing */
-    display: -ms-flexbox; /* Not needed if autoprefixing */
-    display: inline-flex;
-    width: -webkit-fill-available;
-    margin: 1rem;
-  }
-  .my-masonry-grid_column {
-    padding-left: 30px; /* gutter size */
-    background-clip: padding-box;
-  }
-  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
-    margin-bottom: 30px;
-  }
-
   
 
-  div.filter-option:hover{
-    opacity:0.8 !important;
+  @keyframes comeIn {
+    0% { transform: scale(0) }
+    75% { transform: scale(1.03) }
+    100% { transform: scale(1) }
+ }
+
+  .xmasonry .xblock {
+      animation: comeIn ease 0.5s;
+      animation-iteration-count: 1;
+      transition: left .3s ease, top .3s ease;
   }
-  
+
   div.project-component {
     background-color: #3B3B3B;
-    /* margin: 1rem; */
+    margin: 1rem;
     border-radius: 10px;
     padding: 1rem;
     height: fit-content;

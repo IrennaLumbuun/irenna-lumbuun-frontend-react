@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Projects.css";
-import Masonry from "react-masonry-css";
 import axios from "axios";
 import { ToggleButton } from "@mui/material";
+import { XMasonry, XBlock } from "react-xmasonry";
 
 function Projects(props) {
 	const BACKEND_URL = "https://irenna-lumbuun-backend.herokuapp.com";
@@ -135,13 +135,6 @@ function Projects(props) {
 		};
 	};
 
-	const breakpointColumnsObj = {
-		default: 4,
-		1100: 3,
-		700: 2,
-		500: 1,
-	};
-
 	return (
 		<section>
 			<h1 id="project-title">Projects</h1>
@@ -190,34 +183,31 @@ function Projects(props) {
 					);
 				})}
 			</div>
-
-			<Masonry
-				breakpointCols={breakpointColumnsObj}
-				className="my-masonry-grid"
-				columnClassName="my-masonry-grid_column"
-			>
+			<XMasonry center={false}>
 				{projectsToDisplay.map((project) => (
-					<div className="project-component">
-						<a href={project.url} rel="noreferrer" target="_blank">
-							<h1 className="project-title">{project.title}</h1>
-							<p className="project-description">{project.description}</p>
-							{project.tags.map((tag) => {
-								return (
-									<ul className="project-tags">
-										<li
-											key={tag}
-											className="project-tags-item"
-											style={getTagStyle(tag)}
-										>
-											{tag}
-										</li>
-									</ul>
-								);
-							})}
-						</a>
-					</div>
+					<XBlock>
+						<div className="project-component">
+							<a href={project.url} rel="noreferrer" target="_blank">
+								<h1 className="project-title">{project.title}</h1>
+								<p className="project-description">{project.description}</p>
+								{project.tags.map((tag) => {
+									return (
+										<ul className="project-tags">
+											<li
+												key={tag}
+												className="project-tags-item"
+												style={getTagStyle(tag)}
+											>
+												{tag}
+											</li>
+										</ul>
+									);
+								})}
+							</a>
+						</div>
+					</XBlock>
 				))}
-			</Masonry>
+			</XMasonry>
 		</section>
 	);
 }

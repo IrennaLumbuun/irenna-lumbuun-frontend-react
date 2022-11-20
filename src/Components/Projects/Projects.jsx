@@ -39,7 +39,7 @@ function Projects(props) {
 							promises.push(promise);
 						}
 
-						// While the for loop triggers the promise, it doesn't actually wait until they finish
+						// The for loop triggers the promise, but it doesn't wait until they finish
 						// We need this chunk of code to wait for all calls to finish before returning the result
 						Promise.all(promises).then(() => {
 							resolve(projects);
@@ -96,16 +96,18 @@ function Projects(props) {
 			let tags = [];
 			for (let d of Object.values(response.data)) {
 				// manually remove some tags
-				// python and javascript is redundant
-				// so is keras and scikit
-				// for now, google-cloud only includes cloud vision project,
+				// - python and javascript is redundant
+				// - so is keras and scikit
+				// - DynamoDB is part of AWS
+				// - for now, google-cloud only includes cloud vision project,
 				// which are the same as the projects in "Computer Vision"
 				if (
 					d.id === "python" ||
 					d.id === "javascript" ||
 					d.id === "keras" ||
 					d.id === "scikit" ||
-					d.id === "google-cloud"
+					d.id === "google-cloud" ||
+					d.id === "dynamodb"
 				)
 					continue;
 
@@ -134,8 +136,7 @@ function Projects(props) {
 	};
 
 	const breakpointColumnsObj = {
-		default: 5,
-		1400: 4,
+		default: 4,
 		1100: 3,
 		700: 2,
 		500: 1,
@@ -175,9 +176,13 @@ function Projects(props) {
 							}}
 							onChange={() => {
 								setSelectedTag(tag.name);
-								getProjectsByTag(tag.name.replace(" ", "-").toLowerCase()).then(
-									(projects) => setProjectsToDisplay(projects)
-								);
+								// We basically replace any " " and "/" with a "-"
+								// This is because for a tag like React Native,
+								// the tag id should be "react-native"
+								// But for HTML/CSS, it should be "html-css"
+								getProjectsByTag(
+									tag.name.replace(/ |\//, "-").toLowerCase()
+								).then((projects) => setProjectsToDisplay(projects));
 							}}
 						>
 							{tag.name.replace("-", " ")}

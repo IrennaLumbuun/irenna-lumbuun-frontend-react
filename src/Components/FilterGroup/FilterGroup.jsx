@@ -25,10 +25,10 @@ function FilterGroup(props) {
 			{props.tags.map((tag) => {
 				return (
 					<ToggleButton
+						key={tag.id}
 						value={tag.name}
 						selected={selectedTag === tag.name}
 						className="filter-option"
-						id={tag.id}
 						style={{
 							backgroundColor: props.getTagColor(
 								tag.id.replace(" ", "-").toLowerCase()

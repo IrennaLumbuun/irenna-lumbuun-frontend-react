@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import './App.css';
 import Intro from './Components/Intro/Intro'
 import Projects from './Components/Projects/Projects'
+import AboutMe from './Components/AboutMe/AboutMe'
 import { FullPage, Slide } from 'react-full-page';
 import { slide as Menu } from 'react-burger-menu'
 
 function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  
+
   return (
     <FullPage scrollMode="normal" className="App">
       <Slide id="IntroPage">
@@ -18,8 +19,11 @@ function App() {
       </Menu>
         <Intro />
       </Slide>
-      <Slide id="ProjectsPage">
+      {/* <Slide id="ProjectsPage">
         <Projects />
+      </Slide> */}
+      <Slide id="AboutMe">
+        <AboutMe />
       </Slide>
     </FullPage>
   );

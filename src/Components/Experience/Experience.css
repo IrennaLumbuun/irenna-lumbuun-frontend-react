@@ -1,0 +1,21 @@
+.experience-title {
+	font-size: 2rem;
+}
+
+.experience-technology-container {
+	margin: 0;
+	overflow: hidden;
+	display: inline-flex;
+	gap: 3rem;
+}
+
+.experience-tenure {
+	/* padding-inline-start: 2ch; */
+	font-weight: 300;
+}
+
+.experience-technology-container > li {
+	display: list-item;
+	list-style-type: "⛏";
+	padding-inline-start: 1ch;
+}

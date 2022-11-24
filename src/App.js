@@ -11,14 +11,14 @@ function App() {
 
   return (
     <FullPage scrollMode="normal" className="App">
-      <Slide id="IntroPage">
+      {/* <Slide id="IntroPage">
       <Menu right isOpen={isMenuOpen} onStateChange={(state) => setMenuOpen(state.isOpen)}>
         <a value="IntroPage" href="#IntroPage" onClick={() => setMenuOpen(false)}>Home</a>
         <a value="ProjectsPage" href="#ProjectsPage" onClick={() => setMenuOpen(false)}
          >Projects</a>
       </Menu>
         <Intro />
-      </Slide>
+      </Slide> */}
       <Slide id="AboutMePage">
         <AboutMe />
       </Slide>

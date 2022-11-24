@@ -1,0 +1,27 @@
+{
+    "experiences": [
+    {
+        "id": "amazon-2022",
+        "company": "Amazon",
+        "title": "Software Engineer",
+        "tenure": "January 2022 - Present",
+        "description": ["Collaborate with product managers and other SDEs to design and implement new features, write unit tests, set up integration tests, and write documentation to enhance the efficiency of Amazon delivery system.", "Provide additional support during on-call rotation. This includes troubleshooting unforeseen problems with current services, maintaining hosts, and fixing CI/CD pipelines."],
+        "technologies": ["Java", "Kotlin", "Typescript", "Amazon Web Service (AWS)"]
+    },
+    {
+        "id": "hpe-2021",
+        "company": "Hewlett Packard Enterprise",
+        "title": "Software Engineer Intern",
+        "tenure": "June 2021 - August 2021",
+        "description": ["Enhance security measures of Nimble OS SDK by adding new features that support different types of users."],
+        "technologies": ["Python", "Go"]
+    },
+    {
+        "id": "Volkswagen-2020",
+        "company": "Volkswagen Group of America",
+        "title": "Software Engineer Intern",
+        "tenure": "June 2020 - December 2020",
+        "description": ["Worked on the voice assistant module; build functions to respond to users' voice input.", "Implement JWT creation and verification on the core security module."],
+        "technologies": ["Java", "Python", "Amazon Web Service (AWS)"]
+    }]
+}

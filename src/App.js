@@ -19,12 +19,12 @@ function App() {
       </Menu>
         <Intro />
       </Slide>
-      {/* <Slide id="ProjectsPage">
-        <Projects />
-      </Slide> */}
-      <Slide id="AboutMe">
+      <Slide id="AboutMePage">
         <AboutMe />
       </Slide>
+       {/* <Slide id="ProjectsPage">
+        <Projects />
+      </Slide> */}
     </FullPage>
   );
 }

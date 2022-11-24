@@ -1,9 +1,7 @@
 import React, { useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import "./AboutMe.css";
-import AvatarView from "@sarge/avatar-view";
-import { Model } from "./Model";
+import Model from "./Waving";
 
 function AboutMe(props) {
 	return (
@@ -20,20 +18,19 @@ function AboutMe(props) {
 					culpa qui officia deserunt mollit anim id est laborum.
 				</p>
 			</div>
-			<Canvas
-				camera={{ position: [2, 0, 12.25], fov: 15 }}
-				style={{
-					backgroundColor: "#111a21",
-				}}
-			>
-				<ambientLight intensity={1.25} />
-				<ambientLight intensity={0.1} />
-				<directionalLight intensity={0.4} />
-				<Suspense fallback={null}>
-					<Model position={[0.025, -0.9, 0]} />
-				</Suspense>
-				<OrbitControls />
-			</Canvas>
+			<div id="AboutMeAvatar">
+				<Canvas
+					id="AboutMeAvatarCanvas"
+					camera={{ position: [5, 6, 10], fov: 15 }}
+				>
+					<ambientLight intensity={1.25} />
+					<ambientLight intensity={0.1} />
+					<directionalLight intensity={0.4} />
+					<Suspense fallback={null}>
+						<Model position={[0, 0, 0]} />
+					</Suspense>
+				</Canvas>
+			</div>
 		</section>
 	);
 }

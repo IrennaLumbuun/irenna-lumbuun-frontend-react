@@ -37,7 +37,6 @@ function AboutMe(props) {
 					))}
 				</section>
 				<section id="AboutMeAvatar">
-					<div style={{height:"30%"}}/>
 					<Canvas
 						id="AboutMeAvatarCanvas"
 						camera={{ position: [5, 0, 16], fov: 8 }}

@@ -48,11 +48,33 @@
 		grid-area: sidebar;
 		display: flex;
 	}
+}
+
+@media only screen and (min-width: 760px) 
+and (max-width: 1200px) {
+	/* For desktop: */
+
+	#AboutMeLegend {
+		padding: 0.5rem;
+		font-weight: 500;
+	}
+
+	#AboutMeContainer {
+		padding: 1rem;
+		grid-template-columns: 3fr 1fr;
+	}
+
+	#AboutMeAvatar {
+		grid-area: sidebar;
+		display: flex;
+	}
 
 	#AboutMeAvatarCanvas {
 		overflow:visible;
+        width:20vw !important;;
 	}
 }
+
 
 #AboutMeText {
 	grid-area: main;

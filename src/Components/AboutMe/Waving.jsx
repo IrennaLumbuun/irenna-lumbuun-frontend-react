@@ -1,18 +1,28 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState, useReducer } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { Vector3 } from "three";
 
 export default function Model({ ...props }) {
 	const group = useRef();
 	const { nodes, materials, animations } = useGLTF("/waving.glb");
-
 	const { actions } = useAnimations(animations, group);
 
+	// Doing a force update really is not an ideal solution
+	// I have to implement it because updating the ref inside of useEffect doesn't work
+	// This is because `useRef` doesn't give a notification when it gets updated
+	// I attempted to use a callback ref instead, but `useAnimations` refuse to work with it
+	const [, forceUpdate] = useReducer(() => {
+		if (group.current !== undefined && group.current.position.y === 0)
+			group.current.translateY(-0.7)}
+		);
+
 	useEffect(() => {
-		actions["Armature.001|mixamo.com|Layer0"].play();
+		actions["Armature.001|mixamo.com|Layer0.001"].play();
+		forceUpdate();
 	});
 
 	return (
-		<group ref={group} {...props} dispose={null}>
+		<group ref={group} {...props}>
 			<primitive object={nodes.Hips} />
 			<skinnedMesh
 				geometry={nodes.Wolf3D_Body.geometry}
@@ -75,4 +85,4 @@ export default function Model({ ...props }) {
 	);
 }
 
-useGLTF.preload("/waving.glb");
+// useGLTF.preload("/waving.glb");

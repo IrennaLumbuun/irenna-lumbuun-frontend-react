@@ -50,6 +50,10 @@
 		grid-area: sidebar;
 		display: flex;
 	}
+
+	#AboutMeAvatarCanvas {
+		overflow:visible;
+	}
 }
 
 #AboutMeText {

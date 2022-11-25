@@ -14,7 +14,7 @@
 	grid-column-gap: 3rem;
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 770px) {
 	/* For mobile phones and smaller-screen windows: */
 	#AboutMeContainer {
 		display:block;

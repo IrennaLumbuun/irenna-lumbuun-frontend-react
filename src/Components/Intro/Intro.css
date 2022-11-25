@@ -62,7 +62,7 @@ div#home-button-container {
 }
 
 /* Mobile setting */
-@media (max-width: 760) {
+@media (max-width: 760px) {
 	.contact-button {
 		font-size: 4vw;
 	}
@@ -91,6 +91,7 @@ div#home-button-container {
 #github-contact-button {
 	color: #c270c0;
 	border: 2px solid #c270c0;
+    margin-right: 0;
 }
 
 #github-contact-button:hover {

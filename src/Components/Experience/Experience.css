@@ -9,21 +9,29 @@
 .experience-technology-container {
 	margin: 0;
 	overflow: hidden;
-	display: inline-flex;
+	display: flex;
 	gap: 3rem;
 }
 
-.experience-tenure {
-	/* padding-inline-start: 2ch; */
-	font-weight: 300;
+@media only screen and (max-width: 760px) {
+   /* Display technologies hotizontally on mobile */
+	.experience-technology-container  {
+		flex-direction:column;
+      gap: 5px;
+	}
+
+   .experience-technology-container > li  {
+		margin-bottom:0;
+	}
 }
 
-.experience-description-container > li {
-   line-height: 1.5rem;
+.experience-tenure {
+	font-weight: 300;
 }
 
 .experience-technology-container > li {
 	display: list-item;
 	list-style-type: "⛏";
 	padding-inline-start: 1ch;
+   line-height: 1.5rem;
 }

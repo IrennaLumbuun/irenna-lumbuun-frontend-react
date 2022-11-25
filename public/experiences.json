@@ -5,7 +5,7 @@
         "company": "Amazon",
         "title": "Software Engineer",
         "tenure": "January 2022 - Present",
-        "description": ["Work with other SDEs to design and implement code solution to improve the efficiency of the Amazon Last Mile Delivery system.", "Research and document system's readiness for peak season (i.e. Amazon Prime Day, Thanksgiving, and Christmas) based on holiday forecast.", "Provide support during scheduled 24/7 on-call rotation. This includes troubleshooting unforeseen problems with current services, maintaining hosts, and fixing CI/CD pipelines."],
+        "description": ["Work with other SDEs to design and implement code solution to improve the efficiency of the Amazon Last Mile Delivery system.", "Research and document system's readiness for peak season (i.e. Amazon Prime Day, Thanksgiving, and Christmas) based on holiday forecast.", "Provide 24/7 support during on-call rotation. This includes troubleshooting unforeseen problems with current services, maintaining hosts, and fixing CI/CD pipelines."],
         "technologies": ["Java", "Kotlin", "Typescript", "Amazon Web Service (AWS)"]
     },
     {

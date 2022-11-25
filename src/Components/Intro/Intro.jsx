@@ -3,7 +3,7 @@ import "./Intro.css";
 
 function Intro(props) {
 	const PRINT_SPEED_MS = 50;
-	const INTRO_TEXT = "<I am a software engineer./>";
+	const INTRO_TEXT = "<I am a software engineer. />";
 
 	const sleep = (ms) => {
 		return new Promise((resolve) => setTimeout(resolve, ms));

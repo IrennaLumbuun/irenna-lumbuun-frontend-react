@@ -13,7 +13,7 @@ export default function Model({ ...props }) {
 	// I attempted to use a callback ref instead, but `useAnimations` refuse to work with it
 	const [, forceUpdate] = useReducer(() => {
 		if (group.current !== undefined && group.current.position.y === 0)
-			group.current.translateY(-0.7)}
+			group.current.translateY(-0.8)}
 		);
 
 	useEffect(() => {

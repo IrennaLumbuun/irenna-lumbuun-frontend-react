@@ -40,7 +40,7 @@ function AboutMe(props) {
 					<div style={{height:"30%"}}/>
 					<Canvas
 						id="AboutMeAvatarCanvas"
-						camera={{ position: [5, 0, 15], fov: 8 }}
+						camera={{ position: [5, 0, 16], fov: 8 }}
 					>
 						<ambientLight intensity={1.25} />
 						<ambientLight intensity={0.1} /> 

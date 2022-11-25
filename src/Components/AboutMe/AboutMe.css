@@ -2,19 +2,22 @@
 	color: #e4e6eb;
 	margin: 1rem;
 	font-size: 3rem;
+    border: 5px solid #c48bc3;
+	border-radius: 10px;
+    max-width:85%;
+    height: fit-content;
 }
 
 #AboutMeContainer {
 	display: grid;
 	grid-template-areas: "main sidebar";
 	grid-column-gap: 3rem;
-	height: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 760px) {
 	/* For mobile phones and smaller-screen windows: */
 	#AboutMeContainer {
-		grid-template-columns: 4fr 0;
+		display:block;
 	}
 
 	#AboutMeLegend {
@@ -28,13 +31,8 @@
 	}
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 760px) {
 	/* For desktop: */
-	#AboutMe {
-		width: 85%;
-		border: 5px solid #c48bc3;
-		border-radius: 10px;
-	}
 
 	#AboutMeLegend {
 		padding: 0.5rem;

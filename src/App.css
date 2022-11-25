@@ -101,8 +101,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0.3);
 }
 
+#IntroPage {
+  height: 100vh;
+}
+
 #AboutMePage {
   display: flex;
   place-content: center;
-  padding: 2rem 0
+  padding: 2rem 0;
+  overflow-wrap: anywhere;
 }

@@ -133,7 +133,7 @@ function Projects(props) {
 	};
 
 	return (
-		<section>
+		<section className="projects">
 			<h1 id="project-title">Projects</h1>
 			<h2 id="project-filter-title">Filter by Tag: </h2>
 			<FilterGroup
@@ -168,6 +168,25 @@ function Projects(props) {
 					</XBlock>
 				))}
 			</XMasonry>
+			{projectsToDisplay.length === 0 && (
+				<p className="welp-2-14">
+					<em>Well this is awkward...</em>
+					<br></br>
+					You may wonder why this section is empty. The answer to that is
+					because this website is failing to make requests to the backend. You
+					see, the backend for this project is hosted in Heroku. And, for
+					reasons that I haven't understand yet,
+					<strong> my Heroku account magically disappeared</strong>. My
+					assumption is because I haven't visited the account for the past 365
+					days. Or, because I recently deactivated my github student developer
+					pack.
+					<br></br>
+					Worry not, I'm planning to get the backend up and running by
+					<strong> 2/20</strong>. You can visit this website again then. If
+					you're really curious about my projects, you may visit my linkedin
+					(https://www.linkedin.com/in/irenna-lumbuun)
+				</p>
+			)}
 		</section>
 	);
 }

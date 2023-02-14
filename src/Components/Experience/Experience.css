@@ -1,5 +1,5 @@
-.experience-container{
-   margin-bottom:1rem;
+.experience-container {
+	margin-bottom: 1rem;
 }
 
 .experience-title {
@@ -14,14 +14,14 @@
 }
 
 @media only screen and (max-width: 760px) {
-   /* Display technologies hotizontally on mobile */
-	.experience-technology-container  {
-		flex-direction:column;
-      gap: 5px;
+	/* Display technologies hotizontally on mobile */
+	.experience-technology-container {
+		flex-direction: column;
+		gap: 5px;
 	}
 
-   .experience-technology-container > li  {
-		margin-bottom:0;
+	.experience-technology-container > li {
+		margin-bottom: 0;
 	}
 }
 
@@ -33,5 +33,5 @@
 	display: list-item;
 	list-style-type: "⛏";
 	padding-inline-start: 1ch;
-   line-height: 1.5rem;
+	line-height: 1.5rem;
 }

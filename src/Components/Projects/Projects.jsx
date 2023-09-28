@@ -3,6 +3,7 @@ import "./Projects.css";
 import axios from "axios";
 import { XMasonry, XBlock } from "react-xmasonry";
 import FilterGroup from "../FilterGroup/FilterGroup";
+import { projectsData, technologiesData } from "./hardcodedData";
 
 function Projects(props) {
 	const BACKEND_URL = "https://backend.irennalumbuun.com";
@@ -17,33 +18,55 @@ function Projects(props) {
 	const getAllProjects = (url) => {
 		axios
 			.get(`${BACKEND_URL}/projects`)
-			.then((response) => setProjectsToDisplay(response.data));
+			.then((response) => setProjectsToDisplay(response.data))
+			.catch((e) => {
+				// 9/27/2023 - having some issues deploying new cert to the backend
+				// so, for now we're just gonna manually display the data when the frontend fail to contact the backend
+				setProjectsToDisplay(projectsData);
+			});
 	};
 
 	const getProjectsByTag = async (tag_id) => {
 		return new Promise((resolve, reject) => {
 			let projects = [];
-			axios.get(`${BACKEND_URL}/technology/${tag_id}`).then((response) => {
-				for (let d of Object.values(response.data)) {
-					if (typeof d === "object") {
-						let promises = [];
-						for (let project_id of d) {
-							const promise = axios
-								.get(`${BACKEND_URL}/projects/${project_id}`)
-								.then((response) => {
-									projects.push(response.data);
-								});
-							promises.push(promise);
-						}
+			axios
+				.get(`${BACKEND_URL}/technology/${tag_id}`)
+				.then((response) => {
+					for (let d of Object.values(response.data)) {
+						if (typeof d === "object") {
+							let promises = [];
+							for (let project_id of d) {
+								const promise = axios
+									.get(`${BACKEND_URL}/projects/${project_id}`)
+									.then((response) => {
+										projects.push(response.data);
+									});
+								promises.push(promise);
+							}
 
-						// The for loop triggers the promise, but it doesn't wait until they finish
-						// We need this chunk of code to wait for all calls to finish before returning the result
-						Promise.all(promises).then(() => {
-							resolve(projects);
-						});
+							// The for loop triggers the promise, but it doesn't wait until they finish
+							// We need this chunk of code to wait for all calls to finish before returning the result
+							Promise.all(promises).then(() => {
+								resolve(projects);
+							});
+						}
 					}
-				}
-			});
+				})
+				.catch((e) => {
+					console.error(e);
+					// 10/1/2023 - having some issues deploying new cert to the backend
+					// so, for now we're just gonna manually display the data when the frontend fail to contact the backend
+					const projects = [];
+					const projectIds = technologiesData.find(
+						(tech) => tech.id === tag_id
+					).projects;
+					for (const id of projectIds) {
+						projects.push(
+							projectsData.find((project) => project.projectId === id)
+						);
+					}
+					resolve(projects);
+				});
 		});
 	};
 
@@ -87,42 +110,53 @@ function Projects(props) {
 		return [color, order];
 	};
 
+	const getTagsColorAndSort = (data) => {
+		let tags = [];
+		for (let d of data) {
+			// manually remove some tags
+			// - python and javascript is redundant
+			// - so is keras and scikit
+			// - DynamoDB is part of AWS
+			// - for now, google-cloud only includes cloud vision project,
+			// which are the same as the projects in "Computer Vision"
+			if (
+				d.id === "python" ||
+				d.id === "javascript" ||
+				d.id === "keras" ||
+				d.id === "scikit" ||
+				d.id === "google-cloud" ||
+				d.id === "dynamodb"
+			)
+				continue;
+
+			let color_order = getTagColor(d.id);
+			tags.push({
+				id: d.id,
+				name: d.name,
+				color: color_order[0],
+				order: color_order[1],
+			});
+
+			// "sort" by color so it doesn't look messy in the front end side
+			tags.sort(function (tag1, tag2) {
+				return tag1.order - tag2.order;
+			});
+		}
+		return tags;
+	};
+
 	const getTags = () => {
 		// get each projects' tag, group them in an array
-		axios.get(`${BACKEND_URL}/technologies/`).then((response) => {
-			let tags = [];
-			for (let d of Object.values(response.data)) {
-				// manually remove some tags
-				// - python and javascript is redundant
-				// - so is keras and scikit
-				// - DynamoDB is part of AWS
-				// - for now, google-cloud only includes cloud vision project,
-				// which are the same as the projects in "Computer Vision"
-				if (
-					d.id === "python" ||
-					d.id === "javascript" ||
-					d.id === "keras" ||
-					d.id === "scikit" ||
-					d.id === "google-cloud" ||
-					d.id === "dynamodb"
-				)
-					continue;
-
-				let color_order = getTagColor(d.id);
-				tags.push({
-					id: d.id,
-					name: d.name,
-					color: color_order[0],
-					order: color_order[1],
-				});
-
-				// "sort" by color so it doesn't look messy in the front end side
-				tags.sort(function (tag1, tag2) {
-					return tag1.order - tag2.order;
-				});
-			}
-			setTags(tags);
-		});
+		axios
+			.get(`${BACKEND_URL}/technologies/`)
+			.then((response) => {
+				setTags(getTagsColorAndSort(Object.values(response.data)));
+			})
+			.catch((e) => {
+				// 10/1/2023 - having some issues deploying new cert to the backend
+				// so, for now we're just gonna manually display the data when the frontend fail to contact the backend
+				setTags(getTagsColorAndSort(Object.values(technologiesData)));
+			});
 	};
 
 	const getTagStyle = (tag_id) => {

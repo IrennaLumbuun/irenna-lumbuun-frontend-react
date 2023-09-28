@@ -43,7 +43,11 @@ function FilterGroup(props) {
 							// But for HTML/CSS, it should be "html-css"
 							props
 								.getProjectsByTag(tag.name.replace(/ |\//, "-").toLowerCase())
-								.then((projects) => props.setProjectsToDisplay(projects));
+								.then((projects) => {
+									console.log(projects);
+									props.setProjectsToDisplay(projects);
+								})
+								.catch((e) => console.error(e));
 						}}
 					>
 						{tag.name.replace("-", " ")}

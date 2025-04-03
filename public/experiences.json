@@ -1,11 +1,19 @@
 {
     "experiences": [
     {
+        "id": "blackrock-2023",
+        "company": "BlackRock",
+        "title": "Software Engineer",
+        "tenure": "March 2023 - Present",
+        "description": ["Designed and implemented a new feature that automates trading securities that require special handling. Significantly reduced manual input errors and trading delays","Improved application loading times and elevated user experience by migrating legacy modules to a modern React application",  "Conducted technical interviews for Software Engineer and QA candidates, ensuring team growth with top talent."],
+        "technologies": ["React", "Python", "Typescript"]
+    },
+    {
         "id": "amazon-2022",
         "company": "Amazon",
         "title": "Software Engineer",
-        "tenure": "January 2022 - Present",
-        "description": ["Work with other SDEs to design and implement code solution to improve the efficiency of the Amazon Last Mile Delivery system.", "Research and document system's readiness for peak season (i.e. Amazon Prime Day, Thanksgiving, and Christmas) based on holiday forecast.", "Provide 24/7 support during on-call rotation. This includes troubleshooting unforeseen problems with current services, maintaining hosts, and fixing CI/CD pipelines."],
+        "tenure": "January 2022 - March 2023",
+        "description": ["Optimized package allocation software for vans and motorbikes, enhancing delivery efficiency on a global scale.", "Research and analyze the software readiness to handle customer’s requests during Amazon Prime and Christmas peak season", "Delivered on-call support by resolving service issues, maintaining host systems, and repairing CI/CD pipelines to ensure operational continuity."],
         "technologies": ["Java", "Typescript", "Amazon Web Service (AWS)"]
     },
     {

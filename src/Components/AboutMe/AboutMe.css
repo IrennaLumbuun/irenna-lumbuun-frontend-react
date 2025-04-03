@@ -2,10 +2,10 @@
 	color: #e4e6eb;
 	margin: 1rem;
 	font-size: 3rem;
-    border: 5px solid #c48bc3;
+	border: 5px solid #c48bc3;
 	border-radius: 10px;
-    max-width:85%;
-    height: fit-content;
+	max-width: 85%;
+	height: fit-content;
 }
 
 #AboutMeContainer {
@@ -17,7 +17,7 @@
 @media only screen and (max-width: 770px) {
 	/* For mobile phones and smaller-screen windows: */
 	#AboutMeContainer {
-		display:block;
+		display: block;
 	}
 
 	#AboutMeLegend {
@@ -50,8 +50,7 @@
 	}
 }
 
-@media only screen and (min-width: 760px) 
-and (max-width: 1200px) {
+@media only screen and (min-width: 760px) and (max-width: 1200px) {
 	/* For desktop: */
 
 	#AboutMeLegend {
@@ -61,7 +60,7 @@ and (max-width: 1200px) {
 
 	#AboutMeContainer {
 		padding: 1rem;
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 4fr 1fr;
 	}
 
 	#AboutMeAvatar {
@@ -70,11 +69,10 @@ and (max-width: 1200px) {
 	}
 
 	#AboutMeAvatarCanvas {
-		overflow:visible;
-        width:20vw !important;;
+		overflow: visible;
+		width: 20vw !important;
 	}
 }
-
 
 #AboutMeText {
 	grid-area: main;
